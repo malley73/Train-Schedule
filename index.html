@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Train Schedule</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Add in any links to external JS and/or CSS files here -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+  <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+  <script type="text/javascript" src="assets/javascript/Clock.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <h1 class="header">Shuttle Schedule</h1>
+      <canvas id="canvas" width="400" height="400" style="background-color:#333">
+  </canvas>
+  </header>
+  <div class="main container">
+    <div>
+      <table id="display">
+        <tr>
+          <th>Shuttle Name</th>
+          <th>Destination</th>
+          <th>Frequency</th>
+          <th>Next Arrival</th>
+          <th>Minutes Away</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Milenium Falcon</td>
+          <td>Alderan</td>
+          <td>1800</td>
+          <td>5:30 PM</td>
+          <td>300</td>
+          <td>Out of Service</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class="form panel panel-default">
+      <h2>Add Shuttle</h2>
+      <div class="panel-body">
+        <form>
+          Shuttle Name:
+          <br>
+          <input type="text" name="shuttle" ><br>
+          Destination:
+          <br>
+          <input type="test" name="planet" ><br>
+          Frequency:<br>
+          <input type="number" name="frequency"><br>
+          First Train Time:<br>
+          <input type="time" name="firsttime"><br>
+          <input type="submit" name="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

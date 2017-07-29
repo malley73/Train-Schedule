@@ -1,0 +1,37 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+}
+.header{
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  font-size: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 3px;
+}
+
+canvas {
+  position: relative;
+  top: 0px;
+  left:40%;
+  z-index: 1;
+}
+
+form{
+  width: 90%;
+}
