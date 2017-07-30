@@ -18,31 +18,26 @@
 </head>
 
 <body>
-
   <header>
     <h1 class="header">Shuttle Schedule</h1>
-      <canvas id="canvas" width="400" height="400" style="background-color:#333">
-  </canvas>
+    <canvas id="canvas" width="400" height="400" style="background-color:#333">
+    </canvas>
   </header>
   <div class="main container">
     <div>
-      <table id="display">
-        <tr>
-          <th>Shuttle Name</th>
-          <th>Destination</th>
-          <th>Frequency</th>
-          <th>Next Arrival</th>
-          <th>Minutes Away</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>Milenium Falcon</td>
-          <td>Alderan</td>
-          <td>1800</td>
-          <td>5:30 PM</td>
-          <td>300</td>
-          <td>Out of Service</td>
-        </tr>
+      <table id="display" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Shuttle Name</th>
+            <th>Destination</th>
+            <th>Frequency</th>
+            <th>Next Arrival</th>
+            <th>Minutes Away</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
       </table>
     </div>
     <br>
@@ -52,15 +47,21 @@
         <form>
           Shuttle Name:
           <br>
-          <input type="text" name="shuttle" ><br>
-          Destination:
+          <input id="shuttle" class="input" type="text" name="shuttle">
+          <br> Destination:
           <br>
-          <input type="test" name="planet" ><br>
-          Frequency:<br>
-          <input type="number" name="frequency"><br>
-          First Train Time:<br>
-          <input type="time" name="firsttime"><br>
-          <input type="submit" name="submit" value="Submit">
+          <input id="planet" class="input" type="text" name="planet">
+          <br> Frequency:
+          <br>
+          <input id="frequency" class="input" type="number" name="frequency">
+          <br> Status:
+          <br>
+          <input id="status" class="input" type="text" name="status">
+          <br> First Train Time:
+          <br>
+          <input id="firsttime" type="time" name="firsttime">
+          <br>
+          <input id="submit" type="submit" name="submit" value="Submit">
         </form>
       </div>
     </div>

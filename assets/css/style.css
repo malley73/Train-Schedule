@@ -32,6 +32,12 @@ canvas {
   z-index: 1;
 }
 
-form{
-  width: 90%;
+.panel,
+.input{
+  width: 95%;
+}
+
+
+#submit{
+  margin:10px;
 }
