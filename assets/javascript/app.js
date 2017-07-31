@@ -12,6 +12,15 @@ $(document).ready(function() {
 
   //define firbase reference
   var database = firebase.database();
+  var i = 0;
+
+  // Initial load
+  if (i === 0) {
+    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+      parseData(childSnapshot);
+      i = 1;
+    });
+  }
 
   function collectFormData() {
     var name = $('#shuttle').val().trim();
@@ -33,7 +42,6 @@ $(document).ready(function() {
     };
 
     database.ref().push(shuttles);
-
     clearForm();
   }
 
@@ -46,8 +54,6 @@ $(document).ready(function() {
   }
 
   function parseData(childSnapshot) {
-    console.log(childSnapshot.val());
-
     var name = childSnapshot.val().name;
     var destination = childSnapshot.val().destination;
     var frequency = childSnapshot.val().frequency;
@@ -55,26 +61,20 @@ $(document).ready(function() {
     var time = childSnapshot.val().initTime;
 
     var timeDiff = moment().diff(moment.unix(time, "X"), "minutes");
-    var minutes = parseInt(frequency - (timeDiff % frequency));
-    var nextArrival = moment().add(minutes, 'minutes').format("hh:mm A");
-    console.log(name);
-    console.log(destination);
-    console.log(frequency);
-    console.log(status);
-    console.log(time);
-    console.log(timeDiff);
-    console.log(minutes);
-    console.log(nextArrival);
+    var minutes = frequency === 0 ? "-" : parseInt(frequency - (timeDiff % frequency));
+    var nextArrival = frequency === 0 ? "-" : moment().add(minutes, 'minutes').format("hh:mm A");
     updateDisplay(name, destination, frequency, nextArrival, minutes, status);
   }
 
   function updateDisplay(name, destination, frequency, nextArrival, minutes, status) {
-    $("#display > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
-      frequency + "</td><td>" + nextArrival + "</td><td>" + minutes + "</td><td>" + status + "</td></tr>");
+    if (minutes === "-") {
+      $("#display > tbody").append("<tr class='danger'><td>" + name + "</td><td>" + destination + "</td><td>" +
+        frequency + "</td><td>" + nextArrival + "</td><td>" + minutes + "</td><td>" + status + "</td></tr>");
+    } else {
+      $("#display > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+        frequency + "</td><td>" + nextArrival + "</td><td>" + minutes + "</td><td>" + status + "</td></tr>");
+    }
   }
-
-
-
 
   // refresh every minute
   setInterval(function() {
@@ -89,10 +89,4 @@ $(document).ready(function() {
     event.preventDefault();
     collectFormData();
   });
-
-  // on Add Event
-  database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-    parseData(childSnapshot);
-  });
-
 });

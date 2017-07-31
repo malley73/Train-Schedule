@@ -4,8 +4,25 @@ html {
 
 body {
   position: relative;
+  background-image: url('../images/coruscant.jpg');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
-.header{
+
+.table,
+.form {
+  background: rgba(255, 255, 255, .75)
+}
+
+h1,
+h2 {
+  font-family: 'Star Jedi', arial;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
+  margin: 10px;
+}
+
+.header {
   text-align: center;
 }
 
@@ -28,16 +45,16 @@ td {
 canvas {
   position: relative;
   top: 0px;
-  left:40%;
+  left: 40%;
   z-index: 1;
 }
 
 .panel,
-.input{
+.input {
   width: 95%;
 }
 
 
-#submit{
-  margin:10px;
+#submit {
+  margin: 10px;
 }
